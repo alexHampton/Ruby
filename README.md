@@ -9,6 +9,7 @@
     * [Blocks](https://github.com/alexHampton/Ruby/tree/master/SoftwareEngineeringFoundations/blocks_project) | [Procs](https://github.com/alexHampton/Ruby/tree/master/SoftwareEngineeringFoundations/procs_project)
   * Classes
     * [Monkey Patching](https://github.com/alexHampton/Ruby/tree/master/SoftwareEngineeringFoundations/monkey_patching_project) | add custom methods to pre-built classes
-    * [Hotel Project](https://github.com/alexHampton/Ruby/tree/master/SoftwareEngineeringFoundations/hotel_project) | hotel check-in service
-    * [Hangman Project](https://github.com/alexHampton/Ruby/tree/master/SoftwareEngineeringFoundations/hangman_project)  | the classic game
-    * [Bootcamp Project](https://github.com/alexHampton/Ruby/tree/master/SoftwareEngineeringFoundations/bootcamp_project) | add teachers and students
+    * Console Apps
+      * [Hotel Project](https://github.com/alexHampton/Ruby/tree/master/SoftwareEngineeringFoundations/hotel_project) | hotel check-in service
+      * [Hangman Project](https://github.com/alexHampton/Ruby/tree/master/SoftwareEngineeringFoundations/hangman_project)  | the classic game
+      * [Bootcamp Project](https://github.com/alexHampton/Ruby/tree/master/SoftwareEngineeringFoundations/bootcamp_project) | add teachers and students
