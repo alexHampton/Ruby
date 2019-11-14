@@ -17,3 +17,4 @@
     * Console Apps
       * [Startup](https://github.com/alexHampton/Ruby/tree/master/SoftwareEngineeringFoundations/startup_project) | Update a startup co. with employees, salaries, etc.
       * [Mastermind](https://github.com/alexHampton/Ruby/tree/master/SoftwareEngineeringFoundations/mastermind_project) | Classic mastermind game.
+      * [Battleship](https://github.com/alexHampton/Ruby/tree/master/SoftwareEngineeringFoundations/battleship_project)
