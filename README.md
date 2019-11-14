@@ -13,3 +13,7 @@
       * [Hotel Project](https://github.com/alexHampton/Ruby/tree/master/SoftwareEngineeringFoundations/hotel_project) | hotel check-in service
       * [Hangman Project](https://github.com/alexHampton/Ruby/tree/master/SoftwareEngineeringFoundations/hangman_project)  | the classic game
       * [Bootcamp Project](https://github.com/alexHampton/Ruby/tree/master/SoftwareEngineeringFoundations/bootcamp_project) | add teachers and students
+  * OOP Projects
+    * Console Apps
+      * [Startup](https://github.com/alexHampton/Ruby/tree/master/SoftwareEngineeringFoundations/startup_project) | Update a startup co. with employees, salaries, etc.
+      * [Mastermind](https://github.com/alexHampton/Ruby/tree/master/SoftwareEngineeringFoundations/mastermind_project) | Classic mastermind game.
