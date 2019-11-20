@@ -5,7 +5,10 @@ require "byebug"
 #####################################################################
 
 
-# Write a method strange_sums that accepts an array of numbers as an argument. The method should return a count of the number of distinct pairs of elements that have a sum of zero. You may assume that the input array contains unique elements.
+# Write a method strange_sums that accepts an array of numbers as an 
+# argument. The method should return a count of the number of distinct 
+# pairs of elements that have a sum of zero. You may assume that the input 
+# array contains unique elements.
 
 def strange_sums(nums)
     count = 0
@@ -28,7 +31,11 @@ end
 
 
 
-# Write a method pair_product that accepts an array of numbers and a product as arguments. The method should return a boolean indicating whether or not a pair of distinct elements in the array result in the product when multiplied together. You may assume that the input array contains unique elements.
+# Write a method pair_product that accepts an array of numbers and a 
+# product as arguments. The method should return a boolean indicating 
+# whether or not a pair of distinct elements in the array result in the
+# product when multiplied together. You may assume that the input array 
+# contains unique elements.
 
 def pair_product(nums, product)
     nums.each_with_index do |num1, idx1|
@@ -52,7 +59,11 @@ end
 
 
 
-# Write a method rampant_repeats that accepts a string and a hash as arguments. The method should return a new string where characters of the original string are repeated the number of times specified by the hash. If a character does not exist as a key of the hash, then it should remain unchanged.
+# Write a method rampant_repeats that accepts a string and a hash as 
+# arguments. The method should return a new string where characters of 
+# the original string are repeated the number of times specified by the 
+# hash. If a character does not exist as a key of the hash, then it should 
+# remain unchanged.
 
 def rampant_repeats(str, hash)
     arr = str.split("")
@@ -73,7 +84,12 @@ end
 
 
 
-# Write a method perfect_square? that accepts a number as an argument. The method should return a boolean indicating whether or not the argument is a perfect square. A perfect square is a number that is the product of some number multiplied by itself. For example, since 64 = 8 * 8 and 144 = 12 * 12, 64 and 144 are perfect squares; 35 is not a perfect square.
+# Write a method perfect_square? that accepts a number as an argument. 
+# The method should return a boolean indicating whether or not the argument 
+# is a perfect square. A perfect square is a number that is the product of 
+# some number multiplied by itself. For example, 
+# since 64 = 8 * 8 and 144 = 12 * 12, 64 and 144 are perfect squares; 
+# 35 is not a perfect square.
 
 def perfect_square(num)
     return true if num == 1
@@ -99,7 +115,12 @@ end
 ###                            PHASE 2                            ###
 #####################################################################
 
-# Write a method anti_prime? that accepts a number as an argument. The method should return true if the given number has more divisors than all positive numbers less than the given number. For example, 24 is an anti-prime because it has more divisors than any positive number less than 24. Math Fact: Numbers that meet this criteria are also known as highly composite numbers.
+# Write a method anti_prime? that accepts a number as an argument. The 
+# method should return true if the given number has more divisors than all 
+# positive numbers less than the given number. For example, 24 is an 
+# anti-prime because it has more divisors than any positive number less 
+# than 24. Math Fact: Numbers that meet this criteria are also known as 
+# highly composite numbers.
 
 def anti_prime?(num)
     (1...num).each { |n| return false if divisor_count(n) >= divisor_count(num) }
@@ -125,7 +146,10 @@ end
 
 
 
-# Let a 2-dimensional array be known as a "matrix". Write a method matrix_addition that accepts two matrices as arguments. The two matrices are guaranteed to have the same "height" and "width". The method should return a new matrix representing the sum of the two arguments.
+# Let a 2-dimensional array be known as a "matrix". Write a method 
+# matrix_addition that accepts two matrices as arguments. The two matrices 
+# are guaranteed to have the same "height" and "width". The method should 
+# return a new matrix representing the sum of the two arguments.
 
 def matrix_addition(mat1, mat2)
     final = Array.new(mat1.length) { Array.new([])}
@@ -153,7 +177,11 @@ matrix_e = [[0 , 0], [12, 4], [6,  3]]
 
 
 
-# Write a method mutual_factors that accepts any amount of numbers as arguments. The method should return an array containing all of the common divisors shared among the arguments. For example, the common divisors of 50 and 30 are 1, 2, 5, 10. You can assume that all of the arguments are positive integers.
+# Write a method mutual_factors that accepts any amount of numbers as 
+# arguments. The method should return an array containing all of the common 
+# divisors shared among the arguments. For example, the common divisors of 
+# 50 and 30 are 1, 2, 5, 10. You can assume that all of the arguments are 
+# positive integers.
 
 def mutual_factors(*nums)
     minimum = nums.min
@@ -179,7 +207,9 @@ end
 
 
 
-# The tribonacci sequence is similar to that of Fibonacci. The first three numbers of the tribonacci sequence are 1, 1, and 2. To generate the next number of the sequence, we take the sum of the previous three numbers. 
+# The tribonacci sequence is similar to that of Fibonacci. The first three 
+# numbers of the tribonacci sequence are 1, 1, and 2. To generate the next 
+# number of the sequence, we take the sum of the previous three numbers. 
 
 def tribonacci_number(num)
     return 1 if num == 1 || num == 2
@@ -200,7 +230,11 @@ end
 ###                            PHASE 3                            ###
 #####################################################################
 
-# Write a method matrix_addition_reloaded that accepts any number of matrices as arguments. The method should return a new matrix representing the sum of the arguments. Matrix addition can only be performed on matrices of similar dimensions, so if all of the given matrices do not have the same "height" and "width", then return nil.
+# Write a method matrix_addition_reloaded that accepts any number of 
+# matrices as arguments. The method should return a new matrix representing 
+# the sum of the arguments. Matrix addition can only be performed on 
+# matrices of similar dimensions, so if all of the given matrices do not 
+#     have the same "height" and "width", then return nil.
 
 def matrix_addition_reloaded(*mates)
     height = mates[0].length
@@ -234,7 +268,11 @@ matrix_e = [[0 , 0], [12, 4], [6,  3]]
 
 
 
-# Write a method squarocol? that accepts a 2-dimensional array as an argument. The method should return a boolean indicating whether or not any row or column is completely filled with the same element. You may assume that the 2-dimensional array has "square" dimensions, meaning it's height is the same as it's width.
+# Write a method squarocol? that accepts a 2-dimensional array as an 
+# argument. The method should return a boolean indicating whether or not 
+# any row or column is completely filled with the same element. You may 
+# assume that the 2-dimensional array has "square" dimensions, meaning it's 
+# height is the same as it's width.
 
 def squarocol?(arr)
     arr.each { |subarr| return true if subarr.all? { |el| el == subarr[0] }}
@@ -282,7 +320,11 @@ end
 
 
 
-# Write a method squaragonal? that accepts 2-dimensional array as an argument. The method should return a boolean indicating whether or not the array contains all of the same element across either of its diagonals. You may assume that the 2-dimensional array has "square" dimensions, meaning it's height is the same as it's width.
+# Write a method squaragonal? that accepts 2-dimensional array as an 
+# argument. The method should return a boolean indicating whether or not 
+# the array contains all of the same element across either of its diagonals. 
+# You may assume that the 2-dimensional array has "square" dimensions, 
+# meaning it's height is the same as it's width.
 
 def squaragonal?(arr)
     diag1 = []
@@ -330,7 +372,9 @@ end
 
 
 
-# Write a method pascals_triangle that accepts a positive number, n, as an argument and returns a 2-dimensional array representing the first n levels of pascal's triangle.
+# Write a method pascals_triangle that accepts a positive number, n, as 
+# an argument and returns a 2-dimensional array representing the first n 
+# levels of pascal's triangle.
 
 def pascals_triangle(num)
     triangle = [[1]]
@@ -378,7 +422,9 @@ end
 #####################################################################
 
 # A "Mersenne prime" is a prime number that is one less than a power of 2. This means that it is a prime number with the form 2^x - 1, where x is some exponent.
-# The first three Mersenne primes are 3, 7, and 31. Write a method mersenne_prime that accepts a number, n, as an argument and returns the n-th Mersenne prime.
+# The first three Mersenne primes are 3, 7, and 31. Write a method 
+# mersenne_prime that accepts a number, n, as an argument and returns 
+# the n-th Mersenne prime.
 
 def mersenne_prime(num)
     arr = []
@@ -423,13 +469,21 @@ end
 
 
 
-# A triangular number is a number of the form (i * (i + 1)) / 2 where i is some positive integer. Substituting i with increasing integers gives the triangular number sequence. The first five numbers of the triangular number sequence are 1, 3, 6, 10, 15.
+# A triangular number is a number of the form (i * (i + 1)) / 2 where i 
+# is some positive integer. Substituting i with increasing integers gives 
+# the triangular number sequence. The first five numbers of the triangular 
+# number sequence are 1, 3, 6, 10, 15.
 
-# We can encode a word as a number by taking the sum of its letters based on their position in the alphabet. For example, we can encode "cat" as 24 because c is the 3rd of the alphabet, a is the 1st, and t is the 20th:
+# We can encode a word as a number by taking the sum of its letters based 
+# on their position in the alphabet. For example, we can encode "cat" as 24 
+# because c is the 3rd of the alphabet, a is the 1st, and t is the 20th:
 
 # 3 + 1 + 20 = 24
 
-# Write a method triangular_word? that accepts a word as an argument and returns a boolean indicating whether or not that word's number encoding is a triangular number. You can assume that the argument contains lowercase letters.
+# Write a method triangular_word? that accepts a word as an argument and 
+# returns a boolean indicating whether or not that word's number encoding 
+# is a triangular number. You can assume that the argument contains 
+# lowercase letters.
 
 def triangular_word?(word)
     num = word_to_num(word)
@@ -469,7 +523,11 @@ end
 
 
 
-# Write a method consecutive_collapse that accepts an array of numbers as an argument. The method should return a new array that results from continuously removing consecutive numbers that are adjacent in the array. If multiple adjacent pairs are consecutive numbers, remove the leftmost pair first.
+# Write a method consecutive_collapse that accepts an array of numbers 
+# as an argument. The method should return a new array that results from 
+# continuously removing consecutive numbers that are adjacent in the array. 
+# If multiple adjacent pairs are consecutive numbers, remove the leftmost 
+# pair first.
 
 def consecutive_collapse(arr)
     # debugger
@@ -503,10 +561,14 @@ end
 
 
 
-# Write a method pretentious_primes that takes accepts an array and a number, n, as arguments. The method should return a new array where each element of the original array is replaced according to the following rules:
+# Write a method pretentious_primes that takes accepts an array and a 
+# number, n, as arguments. The method should return a new array where each 
+# element of the original array is replaced according to the following rules:
 
-# when the number argument is positive, replace an element with the n-th nearest prime number that is greater than the element
-# when the number argument is negative, replace an element with the n-th nearest prime number that is less than the element
+# when the number argument is positive, replace an element with the n-th 
+# nearest prime number that is greater than the element
+# when the number argument is negative, replace an element with the n-th 
+# nearest prime number that is less than the element
 
 def pretentious_primes(arr, num)
     arr.map { |original| pretentious_prime(original, num) }
