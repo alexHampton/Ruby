@@ -18,3 +18,5 @@
       * [Startup](https://github.com/alexHampton/Ruby/tree/master/SoftwareEngineeringFoundations/startup_project) | Update a startup co. with employees, salaries, etc.
       * [Mastermind](https://github.com/alexHampton/Ruby/tree/master/SoftwareEngineeringFoundations/mastermind_project) | Classic mastermind game.
       * [Battleship](https://github.com/alexHampton/Ruby/tree/master/SoftwareEngineeringFoundations/battleship_project)
+  * Additional Projects
+    * [RSpec 3](https://github.com/alexHampton/Ruby/tree/master/SoftwareEngineeringFoundations/rspec_exercise_3) | [RSpec 4](https://github.com/alexHampton/Ruby/tree/master/SoftwareEngineeringFoundations/rspec_exercise_4) | [RSpec 5](https://github.com/alexHampton/Ruby/tree/master/SoftwareEngineeringFoundations/rspec_exercise_5) | [Nauseating Numbers](https://github.com/alexHampton/Ruby/tree/master/SoftwareEngineeringFoundations/nauseating_numbers)
