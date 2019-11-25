@@ -21,3 +21,5 @@
       * [Battleship](https://github.com/alexHampton/Ruby/tree/master/SoftwareEngineeringFoundations/battleship_project)
   * Additional Projects
     * [RSpec 3](https://github.com/alexHampton/Ruby/tree/master/SoftwareEngineeringFoundations/rspec_exercise_3) | [RSpec 4](https://github.com/alexHampton/Ruby/tree/master/SoftwareEngineeringFoundations/rspec_exercise_4) | [RSpec 5](https://github.com/alexHampton/Ruby/tree/master/SoftwareEngineeringFoundations/rspec_exercise_5) | [Nauseating Numbers](https://github.com/alexHampton/Ruby/tree/master/SoftwareEngineeringFoundations/nauseating_numbers) | [Perilous Procs](https://github.com/alexHampton/Ruby/tree/master/SoftwareEngineeringFoundations/perilous_procs) | [Meddling Medley](https://github.com/alexHampton/Ruby/tree/master/SoftwareEngineeringFoundations/meddling_medley)
+  * Final Projects
+    * [Tic Tac Toe](https://github.com/alexHampton/Ruby/tree/master/SoftwareEngineeringFoundations/tic_tac_toe_project)
