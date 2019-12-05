@@ -3,6 +3,8 @@
   * Enumerables and Debugging
     * [Enumerable exercises](https://github.com/alexHampton/Ruby/tree/master/Ruby/enumerables) | Make my own enumerables.
     * [Ghost Game Project](https://github.com/alexHampton/Ruby/tree/master/Ruby/ghost) | Game where you try not to complete the word.
+  * Reference
+    * [Memory Game](https://github.com/alexHampton/Ruby/tree/master/Ruby/reference/memory_puzzle) | Match 2 memory game. Start with 'false' to play. Start with 'true' to have computer play.
 * Software Engineering Foundations
   * RSpec
     * [Demo](https://github.com/alexHampton/Ruby/tree/master/SoftwareEngineeringFoundations/rspec_demo) | [Exercise 1](https://github.com/alexHampton/Ruby/tree/master/SoftwareEngineeringFoundations/rspec_exercise_1) | [Exercise 2](https://github.com/alexHampton/Ruby/tree/master/SoftwareEngineeringFoundations/rspec_exercise_2)
