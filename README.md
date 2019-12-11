@@ -6,6 +6,8 @@
   * Reference
     * [Memory Game](https://github.com/alexHampton/Ruby/tree/master/Ruby/reference/memory_puzzle) | Match 2 memory game. Start with 'false' to play. Start with 'true' to have computer play.
     * [Sudoku](https://github.com/alexHampton/Ruby/tree/master/Ruby/reference/sudoku)
+  * Recursion
+    * [Simple examples](https://github.com/alexHampton/Ruby/blob/master/Ruby/recursion/recursion_exercises.rb) | [Complex examples](https://github.com/alexHampton/Ruby/blob/master/Ruby/recursion/recursion_exercises2.rb)
 * Software Engineering Foundations
   * RSpec
     * [Demo](https://github.com/alexHampton/Ruby/tree/master/SoftwareEngineeringFoundations/rspec_demo) | [Exercise 1](https://github.com/alexHampton/Ruby/tree/master/SoftwareEngineeringFoundations/rspec_exercise_1) | [Exercise 2](https://github.com/alexHampton/Ruby/tree/master/SoftwareEngineeringFoundations/rspec_exercise_2)
