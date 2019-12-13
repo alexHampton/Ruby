@@ -78,32 +78,37 @@
     </ol>
   </section>
 
-  <section>
+  <section id="reviews">
+    <h2>Reviews</h2>
     <form>
       <label for="name">Name:</label>
-      <input id="name" type="text">
+      <input id="name" type="text" name="name"><br />
 
       <label for='rating'>Rating:</label>
-      <label for="one">1</label>
-      <input name="rating" id="one" type="radio" checked>
-      <label for="two">2</label>
-      <input name="rating" id="two" type="radio">
-      <label for="three">3</label>
-      <input name="rating" id="three" type="radio">
-      <label for="four">4</label>
-      <input name="rating" id="four" type="radio">
-      <label for="five">5</label>
-      <input name="rating" id="five" type="radio">
+      1
+      <input name="rating" type="radio" value="1" checked>
+      2
+      <input name="rating" type="radio" value="2">
+      3
+      <input name="rating" type="radio" value="3">
+      4
+      <input name="rating" type="radio" value="4">
+      5
+      <input name="rating" type="radio" value="5"><br />
 
-      <label for="cooking_expertise">Cooking Expertise</label>
+      <label for="cooking_expertise">Cooking Expertise:</label><br />
       <select id="cooking_expertise">
-        <option value="" disabled selected>Select Cooking Expertise</option>
-        <option value="">Sometimes Cook</option>
-        <option value="" >Cook Everyday</option>
-        <option value="">Cooking is a Hobby</option>
-        <option value="">Professional Chef</option>
+        <option value="Select Cooking Expertise" disabled selected>Select Cooking Expertise</option>
+        <option value="Sometimes Cook">Sometimes Cook</option>
+        <option value="Cook Everyday" >Cook Everyday</option>
+        <option value="Cooking is a Hobby">Cooking is a Hobby</option>
+        <option value="Professional Chef">Professional Chef</option>
+      <select><br />
 
-      <select>
+        <label>Review<br />
+          <textarea name="review" rows="8" cols="25"></textarea>
+        </label><br />
+        <input type="submit" value="Submit Review">
     </form>
   </section>
 
