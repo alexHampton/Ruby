@@ -10,6 +10,8 @@
     * [Simple examples](https://github.com/alexHampton/Ruby/blob/master/Ruby/recursion/recursion_exercises.rb) | [Complex examples](https://github.com/alexHampton/Ruby/blob/master/Ruby/recursion/recursion_exercises2.rb) | [More practice](https://github.com/alexHampton/Ruby/blob/master/Ruby/recursion/more_recursion_exercises/lib/recursion_problems.rb)
     * [Word Chains](https://github.com/alexHampton/Ruby/blob/master/Ruby/recursion/word_chains.rb) | Find a chain of words, from one word to another, by changing only one letter at a time.
     
+* Basic HTML
+    
 * Software Engineering Foundations
   * RSpec
     * [Demo](https://github.com/alexHampton/Ruby/tree/master/SoftwareEngineeringFoundations/rspec_demo) | [Exercise 1](https://github.com/alexHampton/Ruby/tree/master/SoftwareEngineeringFoundations/rspec_exercise_1) | [Exercise 2](https://github.com/alexHampton/Ruby/tree/master/SoftwareEngineeringFoundations/rspec_exercise_2)
