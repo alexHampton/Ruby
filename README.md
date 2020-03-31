@@ -9,6 +9,8 @@
   * Recursion
     * [Simple examples](https://github.com/alexHampton/Ruby/blob/master/Ruby/recursion/recursion_exercises.rb) | [Complex examples](https://github.com/alexHampton/Ruby/blob/master/Ruby/recursion/recursion_exercises2.rb) | [More practice](https://github.com/alexHampton/Ruby/blob/master/Ruby/recursion/more_recursion_exercises/lib/recursion_problems.rb)
     * [Word Chains](https://github.com/alexHampton/Ruby/blob/master/Ruby/recursion/word_chains.rb) | Find a chain of words, from one word to another, by changing only one letter at a time.
+  * Git
+    * [Minesweeper](https://github.com/alexHampton/Ruby/tree/master/Ruby/minesweeper)
     
 * Basic HTML
     
