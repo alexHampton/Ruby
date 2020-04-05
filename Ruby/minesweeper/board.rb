@@ -9,12 +9,11 @@ class Board
             Array.new(9) { Tile.new }
         end
 
-        
+
         10.times do
             x, y = rand(9), rand(9) #generate random numbers
 
             while @grid[x][y].bombed #if random position is already bombed
-                debugger
                 x,y = rand(9), rand(9) #generate new random numbers
             end
             @grid[x][y].add_bomb #place bomb on random spot.
@@ -39,10 +38,7 @@ class Board
 
     def run
         until self.win?
-            if self.lose?
-                puts "You lose."
-                return
-            end
+            
             self.render
 
             pos = false
@@ -54,6 +50,14 @@ class Board
                 val = self.get_val
             end
             self.update(pos[0], pos[1], val)
+
+            if self.lose?(pos[0], pos[1], val)
+                self.render
+                puts "You hit a bomb. You lose."
+                return
+            end
+
+
         end
         puts "You win!"
         return
@@ -102,8 +106,9 @@ class Board
         
     end
 
-    def lose?
-
+    def lose?(x, y, val)
+        return true if self.grid[x][y].bombed && val == 'R'
+        false
     end
 
 end
