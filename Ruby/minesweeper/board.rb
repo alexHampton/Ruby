@@ -9,6 +9,19 @@ class Board
             Array.new(9) { Tile.new }
         end
 
+        
+        10.times do
+            x, y = rand(9), rand(9) #generate random numbers
+
+            while @grid[x][y].bombed #if random position is already bombed
+                debugger
+                x,y = rand(9), rand(9) #generate new random numbers
+            end
+            @grid[x][y].add_bomb #place bomb on random spot.
+
+        end
+
+
     end
 
     def render

@@ -12,8 +12,8 @@ class Tile
     def which_symbol 
         if self.flagged
             self.symbol = "F"
-        elsif !self.revealed
-            self.symbol = "X"
+        # elsif !self.revealed
+            # self.symbol = "X"
         elsif self.bombed
             self.symbol = "*"
         else
