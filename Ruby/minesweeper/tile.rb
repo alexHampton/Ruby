@@ -13,7 +13,7 @@ class Tile
         if self.flagged
             self.symbol = "F"
         # elsif !self.revealed
-            # self.symbol = "X"
+        #     self.symbol = "X"
         elsif self.bombed
             self.symbol = "*"
         else

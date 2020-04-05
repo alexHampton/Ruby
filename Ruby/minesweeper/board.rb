@@ -103,7 +103,9 @@ class Board
     end
 
     def win?
-        
+        self.grid.each do |row|
+            return false if row.any? { |pos| !pos.bombed && !pos.revealed }
+        end        
     end
 
     def lose?(x, y, val)
