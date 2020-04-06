@@ -25,6 +25,7 @@ class Board
 
     def render
         puts "  #{(0..8).to_a.join(" ")}"
+        puts
         self.grid.each.with_index do |row, idx|
             print "#{idx} "
             row.each.with_index do |tile, col_idx|
@@ -59,7 +60,7 @@ class Board
                     puts "You hit a bomb. You lose."
                     return
                 end
-                self.count_bombs(row, col)
+                self.count_bombs(self.grid[row][col], row, col)
             end
 
 
@@ -120,23 +121,32 @@ class Board
         false
     end
 
-    def count_bombs(row, col)
-        neighbors = []
+    def count_bombs(tile, row, col)
+        neighbors = {}
         g = self.grid
 
         (row-1..row+1).each do |row_num|
             if row_num >= 0 && row_num < 9
                 (col-1..col+1).each do |col_num|
                     if col_num >= 0 && col_num < 9
-                        unless row == row_num && col == col_num
-                            neighbors << g[row_num][col_num]
+                        unless row == row_num && col == col_num || g[row_num][col_num].neighbor_bomb_count.is_a?(Integer)
+                            neighbors[g[row_num][col_num]] = [row_num, col_num]
                         end
                     end
                 end
             end
         end
 
-        self.grid[row][col].neighbor_bomb_count = neighbors.count { |tile| tile.bombed }
+        self.grid[row][col].neighbor_bomb_count = neighbors.keys.count { |tile| tile.bombed }
+        # debugger
+        if self.grid[row][col].neighbor_bomb_count == 0
+
+            neighbors.each do |tile, pos|
+                tile.reveal
+                self.count_bombs(tile, pos[0], pos[1])
+            end
+        end
+
     end
 
 end

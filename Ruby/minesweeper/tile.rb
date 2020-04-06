@@ -7,7 +7,7 @@ class Tile
         @flagged = false
         @revealed = false
         @symbol = "X"
-        @neighbor_bomb_count = 0
+        @neighbor_bomb_count = nil
         
     end
 
@@ -20,11 +20,9 @@ class Tile
             self.symbol = "*"
         elsif self.neighbor_bomb_count == 0
             self.symbol = "_"
+
         else
             self.symbol = self.neighbor_bomb_count.to_s
-
-        # else
-        #     self.symbol = "$"
         end
     end
 
@@ -39,10 +37,4 @@ class Tile
     def reveal
         self.revealed = true
     end
-
-    def neighbors
-
-    end
-
-
 end
