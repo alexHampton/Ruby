@@ -1,4 +1,4 @@
-require 'byebug'
+require 'colorize'
 class Tile
     attr_accessor :revealed, :bombed, :flagged, :symbol, :neighbor_bomb_count
     
@@ -13,13 +13,13 @@ class Tile
 
     def which_symbol 
         if self.flagged
-            self.symbol = "F"
+            self.symbol = "F".colorize(:green).on_yellow
         elsif !self.revealed
-            self.symbol = "X"
+            self.symbol = "X".colorize(:black).on_white
         elsif self.bombed
-            self.symbol = "*"
+            self.symbol = "*".colorize(:yellow).on_red
         elsif self.neighbor_bomb_count == 0
-            self.symbol = "_"
+            self.symbol = "_".colorize(:green).on_cyan
 
         else
             self.symbol = self.neighbor_bomb_count.to_s

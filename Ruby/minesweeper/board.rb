@@ -25,7 +25,6 @@ class Board
 
     def render
         puts "  #{(0..8).to_a.join(" ")}"
-        puts
         self.grid.each.with_index do |row, idx|
             print "#{idx} "
             row.each.with_index do |tile, col_idx|
