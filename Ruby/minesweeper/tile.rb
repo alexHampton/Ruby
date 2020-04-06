@@ -31,7 +31,11 @@ class Tile
     end
 
     def flag
-        self.flagged ? self.flagged = false : self.flagged = true
+        self.flagged = true
+    end
+
+    def unflag
+        self.flagged = false
     end
 
     def reveal

@@ -39,8 +39,7 @@ class Board
 
 
     def run
-        until self.win?
-            
+        until self.win?            
             self.render
 
             pos = false
@@ -74,8 +73,13 @@ class Board
     def update(pos_1, pos_2, val)
         tile = grid[pos_1][pos_2]
         if val == "F"
-            tile.flag
+            if tile.flagged
+                tile.unflag
+            else
+                tile.flag
+            end
         else
+            tile.unflag
             tile.reveal
         end
     end
