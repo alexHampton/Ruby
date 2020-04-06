@@ -1,23 +1,30 @@
-
+require 'byebug'
 class Tile
-    attr_accessor :revealed, :bombed, :flagged, :symbol
+    attr_accessor :revealed, :bombed, :flagged, :symbol, :neighbor_bomb_count
     
     def initialize
         @bombed = false
         @flagged = false
         @revealed = false
         @symbol = "X"
+        @neighbor_bomb_count = 0
+        
     end
 
     def which_symbol 
         if self.flagged
             self.symbol = "F"
-        # elsif !self.revealed
-        #     self.symbol = "X"
+        elsif !self.revealed
+            self.symbol = "X"
         elsif self.bombed
             self.symbol = "*"
-        else
+        elsif self.neighbor_bomb_count == 0
             self.symbol = "_"
+        else
+            self.symbol = self.neighbor_bomb_count.to_s
+
+        # else
+        #     self.symbol = "$"
         end
     end
 
@@ -37,8 +44,5 @@ class Tile
 
     end
 
-    def neighbor_bomb_count
-
-    end
 
 end

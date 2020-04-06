@@ -36,6 +36,7 @@ class Board
         return
     end
 
+
     def run
         until self.win?
             
@@ -49,13 +50,19 @@ class Board
             until self.valid_val?(val)
                 val = self.get_val
             end
-            self.update(pos[0], pos[1], val)
+            row, col = pos[0], pos[1]
+            self.update(row, col, val)
 
-            if self.lose?(pos[0], pos[1], val)
-                self.render
-                puts "You hit a bomb. You lose."
-                return
+            if val == 'R' # If player reveals the square
+                if self.lose?(row, col)
+                    self.render
+                    puts "You hit a bomb. You lose."
+                    return
+                end
+                self.count_bombs(row, col)
             end
+
+
 
 
         end
@@ -108,9 +115,28 @@ class Board
         end        
     end
 
-    def lose?(x, y, val)
-        return true if self.grid[x][y].bombed && val == 'R'
+    def lose?(x, y)
+        return true if self.grid[x][y].bombed
         false
+    end
+
+    def count_bombs(row, col)
+        neighbors = []
+        g = self.grid
+
+        (row-1..row+1).each do |row_num|
+            if row_num >= 0 && row_num < 9
+                (col-1..col+1).each do |col_num|
+                    if col_num >= 0 && col_num < 9
+                        unless row == row_num && col == col_num
+                            neighbors << g[row_num][col_num]
+                        end
+                    end
+                end
+            end
+        end
+
+        self.grid[row][col].neighbor_bomb_count = neighbors.count { |tile| tile.bombed }
     end
 
 end
