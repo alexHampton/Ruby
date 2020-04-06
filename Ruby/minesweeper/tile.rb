@@ -1,4 +1,5 @@
 require 'colorize'
+
 class Tile
     attr_accessor :revealed, :bombed, :flagged, :symbol, :neighbor_bomb_count
     
