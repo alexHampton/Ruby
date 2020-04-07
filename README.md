@@ -11,8 +11,15 @@
     * [Word Chains](https://github.com/alexHampton/Ruby/blob/master/Ruby/recursion/word_chains.rb) | Find a chain of words, from one word to another, by changing only one letter at a time.
   * Git
     * [Minesweeper](https://github.com/alexHampton/Ruby/tree/master/Ruby/minesweeper)
+  * Data Structures
+    * Abstract Data Types: 
+       * [Stack](https://github.com/alexHampton/Ruby/blob/master/Ruby/data_structures/stack.rb) 
+      | [Queue](https://github.com/alexHampton/Ruby/blob/master/Ruby/data_structures/queue.rb) | [Map](https://github.com/alexHampton/Ruby/blob/master/Ruby/data_structures/map.rb)
+       * [PolyTree](https://github.com/alexHampton/Ruby/tree/master/Ruby/data_structures/skeleton)
+    
     
 * Basic HTML
+   * [Various HTML Exercises](https://github.com/alexHampton/Ruby/tree/master/BasicHTML)
     
 * Software Engineering Foundations
   * RSpec
