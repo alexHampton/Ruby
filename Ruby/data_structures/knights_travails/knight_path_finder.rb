@@ -56,32 +56,49 @@ class KnightPathFinder
         new_moves.each {|move| @considered_positions << move }
         new_moves
     end
+
+    def find_path(end_pos)
+        end_node = @root_node.bfs(end_pos)
+        trace_back_path(end_node)
+    end
+
+    def trace_back_path(end_node)
+        path = [end_node.value]
+        node = end_node
+        until node == @root_node
+            node = node.parent
+            path.unshift(node.value)
+        end
+        path
+
+    end
     
 end
 
 
 k = KnightPathFinder.new([0,0])
 
-p k.root_node
+p k.find_path([7,6])
+p k.find_path([6,2])
 
 
-cren = []
-k.root_node.children.each { |child| cren << child}
+# cren = []
+# k.root_node.children.each { |child| cren << child}
 
-gchildren = []
-cren.each { |child| child.children.each { |gchild| gchildren << gchild }}
+# gchildren = []
+# cren.each { |child| child.children.each { |gchild| gchildren << gchild }}
 
-ggchildren = []
-gchildren.each {|gchild| gchild.children.each { |ggchild| ggchildren << ggchild }}
+# ggchildren = []
+# gchildren.each {|gchild| gchild.children.each { |ggchild| ggchildren << ggchild }}
 
-gggchildren = []
-ggchildren.each { |ggchild| ggchild.children.each { |gggchild| gggchildren << gggchild }}
+# gggchildren = []
+# ggchildren.each { |ggchild| ggchild.children.each { |gggchild| gggchildren << gggchild }}
 
-ggggchildren = []
-gggchildren.each { |gggchild| gggchild.children.each { |ggggchild| ggggchildren << ggggchild }}
-ggggchildren.each { |ggggc| p ggggc.value }
-puts
-puts
-gggggchildren = []
-ggggchildren.each { |ggggchild| ggggchild.children.each { |gggggchild| gggggchildren << gggggchild }}
-gggggchildren.each { |gggggc| p gggggc.value }
+# ggggchildren = []
+# gggchildren.each { |gggchild| gggchild.children.each { |ggggchild| ggggchildren << ggggchild }}
+# ggggchildren.each { |ggggc| p ggggc.value }
+# puts
+# puts
+# gggggchildren = []
+# ggggchildren.each { |ggggchild| ggggchild.children.each { |gggggchild| gggggchildren << gggggchild }}
+# gggggchildren.each { |gggggc| p gggggc.value }
