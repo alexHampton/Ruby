@@ -14,20 +14,24 @@ class TicTacToeNode
 
 
   def losing_node?(evaluator)
-    if @board.tied?
-      return false
-    # if the opponent already won then return true
-    elsif @board.over? && @board.winner != evaluator
-      return true
+
+    # This block taken from the solution #
+    if board.over?
+      # Note that a loss in this case is explicitly the case where the
+      # OTHER person wins: a draw is NOT a loss. Board#won? returns
+      # false in the case of a draw.
+      return board.won? && board.winner != evaluator
     end
+
+
+
     # if it's the opponent's turn and any of the next moves will make the player lose return true
     if evaluator != self.next_mover_mark
-      return true if self.children.any? { |child| child.losing_node?(evaluator)}
+      self.children.any? { |child| child.losing_node?(evaluator)}
     # if all the next possible moves are losing moves, return true
     elsif evaluator == self.next_mover_mark
-      return true if self.children.all? { |child| child.losing_node?(evaluator) }
+      self.children.all? { |child| child.losing_node?(evaluator) }
     end
-    false
   end
 
   def winning_node?(evaluator)
