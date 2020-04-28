@@ -22,6 +22,33 @@ class SuperComputerPlayer < ComputerPlayer
     end
 
   end
+
+
+  # # Better code:
+
+  # # This will make it so the computer won't always choose the exact same 
+  # # solution if more than one solution is available.
+  # possible_moves = node.children.shuffle
+
+  # # Use #find instead of an each block to easily wfind a winning node.
+  # node = possible_moves.find { |child| child.winning_node?(mark) }
+
+  # # If a winning node was found, node will not be nil, so this will return
+  # # that winning node.
+  # return node.prev_move_pos if node
+
+  # # Continue if no winning node was found, and find a node that isn't 
+  # # a losing node.
+  # node = possible_moves.find { |child| !child.losing_node?(mark) }
+  # # Again, return that node if node is not nil.
+  # return node.prev_move_pos if node
+
+  # # If only losing nodes remain, then something is wrong with the program.
+  # # Raise an alarm
+  # raise "Something's wrong here..." 
+
+
+
 end
 
 if __FILE__ == $PROGRAM_NAME
