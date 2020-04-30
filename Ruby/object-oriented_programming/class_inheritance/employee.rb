@@ -1,8 +1,11 @@
+require 'byebug'
+
 class Employee
     attr_reader :name, :title, :salary
     def initialize(name, title, salary, boss)
-        @name, @title, @salary, @boss = 
-        name, title, salary, boss
+        @name, @title, @salary = 
+        name, title, salary
+        self.boss = boss
     end
 
     def bonus(multiplier)
@@ -12,12 +15,17 @@ class Employee
     def boss
         @boss.name
     end
+
+    def boss=(boss)
+        @boss = boss
+        boss.add_sub_employee(self) unless boss.nil?
+    end
 end
 
 # Manager inherits from Employee
 class Manager < Employee
     attr_reader :sub_employees
-    def initialize(name, title, salary, boss)
+    def initialize(name, title, salary, boss = nil)
         # Manager is initialized the same way as Employee by using `super`
         super
         @sub_employees = []
@@ -29,12 +37,20 @@ class Manager < Employee
 
     # `bonus` method is overridden in Manager class
     def bonus(multiplier)
-        sub_employee_salaries = @sub_employees.map do |emp|
-            emp.salary
-        end
-        total_of_salaries = sub_employee_salaries.sum
-        total_of_salaries * multiplier
+        self.total_subsalary * multiplier
+    end
 
+    protected
+
+    def total_subsalary
+        total_subsalary = 0
+        self.sub_employees.each do |employee|
+            total_subsalary += employee.salary
+            if employee.is_a?(Manager)                
+                total_subsalary += employee.total_subsalary
+            end
+        end
+        total_subsalary
     end
 end
 
@@ -43,12 +59,6 @@ Darren = Manager.new("Darren", "TA Manager", 78000, Ned)
 Shawna = Employee.new("Shawna", "TA", 12000, Darren)
 David = Employee.new("David", "TA", 10000, Darren)
 
-Ned.add_sub_employee(Darren)
-Ned.add_sub_employee(Shawna)
-Ned.add_sub_employee(David)
-
-Darren.add_sub_employee(Shawna)
-Darren.add_sub_employee(David)
 
 
 
