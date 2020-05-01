@@ -1,3 +1,4 @@
+require 'byebug'
 module Slideable
 
     private
@@ -14,6 +15,7 @@ module Slideable
         if self.move_dirs.include?(:horizontal)
             moves += self.horizontal_dirs
         end
+        moves
     end
 
     # Return an array of all diagonal moves from start position
@@ -42,7 +44,21 @@ module Slideable
 
     # Return and array of all horiz./ vert. moves from start pos
     def horizontal_dirs
-
+        moves = []
+        x, y_up, y_down = self.pos[0], self.pos[1], self.pos[1]
+        until y_up <= 0 && y_down >= 7
+            y_up -=1
+            y_down += 1
+            moves.push([x, y_up], [x, y_down])
+        end
+        x_left, x_right, y = self.pos[0], self.pos[0], self.pos[1]
+        until x_left <= 0 && x_right >= 0
+            x_left -= 1
+            x_right += 1
+            moves.push([x_left, y], [x_right, y])
+        end
+        moves.reject! { |move| move.any? { |pos| pos < 0 || pos > 7 }}
+        moves
     end
 
     
