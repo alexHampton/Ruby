@@ -1,7 +1,7 @@
 require_relative 'piece'
 require_relative 'module_slideable'
 
-class Bishop < Piece
+class Queen < Piece
     include Slideable
     attr_reader :pos
     def initialize(color, board, pos)
@@ -9,13 +9,12 @@ class Bishop < Piece
     end
 
     def move_dirs
-        HORIZONTAL_DIRS
+        HORIZONTAL_DIRS + DIAGONAL_DIRS
     end
 
 
 end
 
+q = Queen.new(:black, "board", [4,5])
+p q.moves
 
-b = Bishop.new(:black, "board", [5,4])
-puts
-p b.moves
