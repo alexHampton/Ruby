@@ -1,6 +1,5 @@
 require_relative 'piece'
 require_relative 'module_stepable'
-require 'byebug'
 
 class King < Piece
     include Stepable
@@ -22,7 +21,6 @@ class King < Piece
         moves.push([top_side, left_side], [top_side, y], [top_side, right_side])
         moves.push([x, left_side], [x, right_side])
         moves.push([bottom_side, left_side],[bottom_side, y], [bottom_side, right_side])
-
         moves
     end
 end

@@ -11,7 +11,7 @@ class Knight < Piece
         :N
     end
 
-    # return array of all possible moves without obstacles
+    # return array of all possible moves if no obstacles
     def move_difs
         x,y = self.pos[0], self.pos[1]
         moves = []

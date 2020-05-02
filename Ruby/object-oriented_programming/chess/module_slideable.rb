@@ -1,11 +1,5 @@
 module Slideable
 
-    private
-    HORIZONTAL_DIRS = [:horizontal, :vertical]
-    DIAGONAL_DIRS = [:diag_one, :diag_two]
-
-
-    public
     def moves
         moves = []
         if self.move_dirs.include?(:diag_one)
@@ -17,9 +11,9 @@ module Slideable
         moves
     end
 
-
-
     private
+    HORIZONTAL_DIRS = [:horizontal, :vertical]
+    DIAGONAL_DIRS = [:diag_one, :diag_two]
 
     # Return an array of all diagonal moves from start position
     def diagonal_dirs
@@ -52,7 +46,7 @@ module Slideable
     # dx and dy should be either +1, 0 or -1. This will be used to grow in all four directions 
     # for both diagonal and horizontal movement.
     # Ex. dx = -1, dy = -1 --> grow diagonally toward top left, or dx = 0, dy = 1 => grow horizontally toward the right.
-    def grow_unblocked_moves_in_dir(dx, dy)# -1, -1
+    def grow_unblocked_moves_in_dir(dx, dy)
         sx, sy = self.pos[0], self.pos[1]
         ally_color = self.color
         enemy_color = self.color == :white ? :black : :white

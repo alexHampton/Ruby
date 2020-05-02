@@ -15,7 +15,5 @@ class Bishop < Piece
     def move_dirs
         DIAGONAL_DIRS
     end
-
-
 end
 
