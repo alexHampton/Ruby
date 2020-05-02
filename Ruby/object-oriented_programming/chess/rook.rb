@@ -12,4 +12,8 @@ class Rook < Piece
         HORIZONTAL_DIRS
     end
 
+    def symbol
+        :R
+    end
+
 end

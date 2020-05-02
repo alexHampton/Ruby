@@ -12,9 +12,9 @@ class Queen < Piece
         HORIZONTAL_DIRS + DIAGONAL_DIRS
     end
 
+    def symbol
+        :Q
+    end
+
 
 end
-
-q = Queen.new(:black, "board", [4,5])
-p q.moves
-

@@ -1,4 +1,5 @@
 class Piece
+    attr_reader :color, :board, :pos
     def initialize(color, board, pos)
         @color, @board, @pos = color, board, pos
     end
@@ -8,5 +9,9 @@ class Piece
     # using this to test exception handling in board class.
     def valid_move?
         true
+    end
+
+    def symbol
+        :NA
     end
 end

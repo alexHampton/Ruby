@@ -8,14 +8,14 @@ class Bishop < Piece
         super
     end
 
+    def symbol
+        :B
+    end
+
     def move_dirs
-        HORIZONTAL_DIRS
+        DIAGONAL_DIRS
     end
 
 
 end
 
-
-b = Bishop.new(:black, "board", [5,4])
-puts
-p b.moves
