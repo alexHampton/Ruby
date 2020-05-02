@@ -1,4 +1,11 @@
 require_relative 'piece'
+require_relative 'queen'
+require_relative 'rook'
+require_relative 'knight'
+require_relative 'bishop'
+require_relative 'king'
+require_relative 'pawn'
+
 
 class NoPieceError < StandardError
     def message
@@ -16,11 +23,8 @@ class Board
     attr_reader :rows
     def initialize
         @rows = Array.new(8) { Array.new(8)}
-        (0..1).each do |row|
-            (0..7).each do |pos|
-                self.rows[row][pos] = Piece.new 
-            end
-        end
+        self.populate_board
+        self[3,3] = Bishop.new(:black, self, [3,3])
     end
 
     def move_piece(start_pos, end_pos)
@@ -44,9 +48,80 @@ class Board
     def []=(x, y, piece)
         @rows[x][y] = piece
     end
+
+    def populate_board
+        @rows.each.with_index do |row, row_idx|
+            if row_idx < 2
+                color = :black
+                row.each_with_index do |pos, pos_idx|
+                    if row_idx == 0
+                        self[row_idx, pos_idx] = Rook.new(color, self, [row_idx, pos_idx]) if pos_idx == 0 || pos_idx == 7
+                        self[row_idx, pos_idx] = Knight.new(color, self, [row_idx, pos_idx]) if pos_idx == 1 || pos_idx == 6
+                        self[row_idx, pos_idx] = Bishop.new(color, self, [row_idx, pos_idx]) if pos_idx == 2 || pos_idx == 5
+                        self[row_idx, pos_idx] = Queen.new(color, self, [row_idx, pos_idx]) if pos_idx == 3
+                        self[row_idx, pos_idx] = King.new(color, self, [row_idx, pos_idx]) if pos_idx == 4
+                    else
+                        self[row_idx, pos_idx] = Pawn.new(color, self, [row_idx, pos_idx])
+                    end
+                end
+            elsif row_idx > 5
+                color = :white
+                row.each_with_index do |pos, pos_idx|
+                    if row_idx == 7
+                        self[row_idx, pos_idx] = Rook.new(color, self, [row_idx, pos_idx]) if pos_idx == 0 || pos_idx == 7
+                        self[row_idx, pos_idx] = Knight.new(color, self, [row_idx, pos_idx]) if pos_idx == 1 || pos_idx == 6
+                        self[row_idx, pos_idx] = Bishop.new(color, self, [row_idx, pos_idx]) if pos_idx == 2 || pos_idx == 5
+                        self[row_idx, pos_idx] = Queen.new(color, self, [row_idx, pos_idx]) if pos_idx == 3
+                        self[row_idx, pos_idx] = King.new(color, self, [row_idx, pos_idx]) if pos_idx == 4
+                    else
+                        self[row_idx, pos_idx] = Pawn.new(color, self, [row_idx, pos_idx])
+                    end
+                end
+
+            end
+        end
+    end
+
+    #used for testing purposes. will be moved later
+    def render
+        print "  0 1 2 3 4 5 6 7"
+        puts
+        i = 0
+        while i < 8
+            print i.to_s + " "
+            @rows[i].each do |pos|
+                if pos.nil?
+                    print "O "
+                else
+                    print "#{pos.symbol} "
+                end
+            end
+
+            puts
+            i += 1
+        end
+
+
+    end
 end
 
 b = Board.new
 
-puts b.rows[0]
-b.move_piece([5,2], [5,6])
+
+b.render
+
+p b[3,3].moves
+puts
+b[3,3].moves.each do |pos|
+    spot = b[*pos]
+    if spot.nil?
+        p spot
+    else
+        p spot.color
+        p " "
+        p spot.symbol
+    end
+    puts
+end
+
+
