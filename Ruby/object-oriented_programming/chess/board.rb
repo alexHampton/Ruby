@@ -5,7 +5,7 @@ require_relative 'knight'
 require_relative 'bishop'
 require_relative 'king'
 require_relative 'pawn'
-
+require_relative 'null_piece'
 
 class NoPieceError < StandardError
     def message
@@ -31,9 +31,13 @@ class Board
         begin
             raise NoPieceError if self[sx, sy].nil?
             #Update this later when Piece types are added.
-            raise CannotMoveError if !self[sx, sy].valid_move?
+            raise CannotMoveError if !self[sx, sy].valid_moves.include?(end_pos)
             ex, ey = end_pos[0], end_pos[1]
+            # Update the pos variable of the Piece moved
+            self[sx, sy].pos = [ex, ey]
+            # Update the board to show the new position
             self[ex, ey] = self[sx,sy]
+            # Remove the Piece from the statring position
             self[sx, sy] = nil
         rescue => ex
             puts ex.message
@@ -76,7 +80,6 @@ class Board
                         self[row_idx, pos_idx] = Pawn.new(color, self, [row_idx, pos_idx])
                     end
                 end
-
             end
         end
     end
@@ -90,7 +93,7 @@ class Board
             print i.to_s + " "
             @rows[i].each do |pos|
                 if pos.nil?
-                    print "O "
+                    print "#{NullPiece.instance.symbol} "
                 else
                     print "#{pos.symbol} "
                 end
@@ -99,12 +102,9 @@ class Board
             puts
             i += 1
         end
-
-
+        puts
     end
 end
 
 b = Board.new
-
-
 b.render
