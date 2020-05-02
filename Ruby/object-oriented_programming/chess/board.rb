@@ -24,7 +24,6 @@ class Board
     def initialize
         @rows = Array.new(8) { Array.new(8)}
         self.populate_board
-        self[3,3] = Bishop.new(:black, self, [3,3])
     end
 
     def move_piece(start_pos, end_pos)
@@ -109,19 +108,3 @@ b = Board.new
 
 
 b.render
-
-p b[3,3].moves
-puts
-b[3,3].moves.each do |pos|
-    spot = b[*pos]
-    if spot.nil?
-        p spot
-    else
-        p spot.color
-        p " "
-        p spot.symbol
-    end
-    puts
-end
-
-
