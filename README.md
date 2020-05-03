@@ -20,7 +20,8 @@
          * [Tic Tac Toe Super Computer](https://github.com/alexHampton/Ruby/tree/master/Ruby/data_structures/tic_tac_toe/lib) | Use of polytree node and super computer class to make unbeatable computer in tic tac toe.
    * Object-Oriented Programming
      * [Mancala](https://github.com/alexHampton/Ruby/tree/master/Ruby/object-oriented_programming/mancala/lib) | Added a board class to be used to play the game.
-     * [Error Handling Funtime]
+     * [Error Handling Funtime](https://github.com/alexHampton/Ruby/blob/master/Ruby/object-oriented_programming/error_handling_funtime/super_useful.rb) | Exercise in Exception Handling
+     * [Chess](https://github.com/alexHampton/Ruby/blob/master/Ruby/object-oriented_programming/chess/board.rb) | Console app of the game using classes that inherit from other classes and modules. (In Progress)
     
     
 * Basic HTML
