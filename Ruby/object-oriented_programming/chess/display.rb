@@ -1,6 +1,6 @@
 require 'colorize'
 require_relative 'board'
-require_relative 'null_piece'
+require_relative 'pieces/null_piece'
 require_relative'cursor'
 
 require 'byebug'
@@ -66,7 +66,13 @@ class Display
                 @board.request_move(@cursor.cursor_pos)
                 @cursor.selected = false
             end
-
+            if @board.checkmate?(:black) || @board.checkmate?(:white)
+                puts "Oh damn, you lose"
+                sleep(1)
+            elsif @board.in_check?(:black) || @board.in_check?(:white)
+                puts "The King is in check."
+                sleep(1)
+            end
             system("clear")
         end
 

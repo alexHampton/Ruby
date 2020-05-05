@@ -1,11 +1,5 @@
-require_relative 'piece'
-require_relative 'queen'
-require_relative 'rook'
-require_relative 'knight'
-require_relative 'bishop'
-require_relative 'king'
-require_relative 'pawn'
-# require_relative 'null_piece'
+require_relative 'pieces/pieces.rb'
+require 'byebug'
 
 class NoPieceError < StandardError
     def message
@@ -109,12 +103,33 @@ class Board
         pos.all? { |coord| coord.between?(0,7) }
     end
 
+    def checkmate?(color)
+        if in_check?(color)
+            # debugger
+            king_pos = find_king(color)
+            king = self[*king_pos]
+            king_moves = king.valid_moves
+            bad_guys = enemy_pieces(color)
+
+            king_moves.each do |king_move|
+                return false if bad_guys.none? { |bad_guy| bad_guy.valid_moves.include?(king_move)}
+            end
+            return true
+        end
+        false
+    end
+
+    def enemy_pieces(color)
+        enemy_color = color == :black ? :white : :black
+        pieces.select { |piece| piece.color == enemy_color }
+    end
+
     def in_check?(color)
         king_pos = find_king(color)
         king_pos
         enemy_color = color == :black ? :white : :black
-        enemy_pieces = pieces.select { |piece| piece.color == enemy_color }
-        enemy_pieces.any? { |piece| piece.valid_moves.include?(king_pos)}
+        bad_guys = enemy_pieces(color)
+        bad_guys.any? { |piece| piece.valid_moves.include?(king_pos)}
     end
 
     # returns an array of all positions of piece type and color

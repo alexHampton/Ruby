@@ -1,4 +1,3 @@
-require 'byebug'
 require "io/console"
 
 KEYMAP = {
@@ -91,7 +90,7 @@ class Cursor
     when :left, :right, :up, :down
         update_pos(key)
     when :ctrl_c
-        Process.exit
+        Process.exit(0)
     end
   end
 
