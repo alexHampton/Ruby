@@ -54,13 +54,15 @@ module Slideable
 
         until (sx < 0 || sx > 7) || (sy < 0 || sy > 7)
             new_pos = [sx + dx, sy + dy]
+            break if new_pos.any? {|coord| !coord.between?(0,7)}
             # stop adding moves if there is an ally piece in the position.
-            # if !self.board[*new_pos].nil?
-                break if !self.board[*new_pos].nil? && self.board[*new_pos].color == ally_color
+            new_spot = self.board[*new_pos]
+            break if new_spot.nil? || new_spot.color == ally_color
+            # break if !self.board[*new_pos].nil? && self.board[*new_pos].color == ally_color
             # end
             moves << new_pos
             # after adding the position, break if there was an enemy piece in the position.
-            break if !self.board[*new_pos].nil?
+            break if new_spot.color == enemy_color
             sx += dx
             sy += dy
 

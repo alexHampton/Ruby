@@ -44,7 +44,8 @@ class Pawn < Piece
         x, y = self.pos[0], self.pos[1]
         possible_moves = [[x + forward_dir, y + 1], [x + forward_dir, y - 1]]
         possible_moves.reject! do |move|
-            self.board[*move].nil? || self.board[*move].color == self.color
+            new_spot = self.board[*move]
+            new_spot.nil? || new_spot.color == self.color || new_spot.color == nil
         end
         possible_moves
     end

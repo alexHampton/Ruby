@@ -5,7 +5,7 @@ require_relative 'knight'
 require_relative 'bishop'
 require_relative 'king'
 require_relative 'pawn'
-require_relative 'null_piece'
+# require_relative 'null_piece'
 
 class NoPieceError < StandardError
     def message
@@ -26,25 +26,42 @@ class Board
         self.populate_board
     end
 
+    def request_move(start_pos)
+        puts "Please select a place to move the selected piece. Ex: `f3`"
+        new_move = gets.chomp
+        move_piece(start_pos, new_move)
+    end
+
+
     def move_piece(start_pos, end_pos)
-        sx, sy = start_pos[0], start_pos[1]
+        formatted_end_pos = letter_to_pos(end_pos)
+        sx, sy = start_pos
         begin
             raise NoPieceError if self[sx, sy].nil?
             #Update this later when Piece types are added.
-            raise CannotMoveError if !self[sx, sy].valid_moves.include?(end_pos)
-            ex, ey = end_pos[0], end_pos[1]
+            raise CannotMoveError if !self[sx, sy].valid_moves.include?(formatted_end_pos)
+            ex, ey = formatted_end_pos
             # Update the pos variable of the Piece moved
             self[sx, sy].pos = [ex, ey]
             # Update the board to show the new position
             self[ex, ey] = self[sx,sy]
             # Remove the Piece from the statring position
-            self[sx, sy] = nil
+            self[sx, sy] = NullPiece.instance
         rescue => ex
             puts ex.message
+            sleep(1)
         end
     end
 
+    def letter_to_pos(pos)
+        letter, num = pos[0].upcase, (pos[1].to_i) - 1
+        letters = "ABCDEFGH"
+        numbered_pos = [num, letters.index(letter)]
+        numbered_pos
+    end
+
     def [](x, y)
+        return nil if x < 0 || y < 0
         @rows[x][y]
     end
 
@@ -80,31 +97,37 @@ class Board
                         self[row_idx, pos_idx] = Pawn.new(color, self, [row_idx, pos_idx])
                     end
                 end
-            end
-        end
-    end
-
-    #used for testing purposes. will be moved later
-    def render
-        print "  0 1 2 3 4 5 6 7"
-        puts
-        i = 0
-        while i < 8
-            print i.to_s + " "
-            @rows[i].each do |pos|
-                if pos.nil?
-                    print "#{NullPiece.instance.symbol} "
-                else
-                    print "#{pos.symbol} "
+            else
+                row.each_with_index do |pos, pos_idx|
+                    self[row_idx, pos_idx] = NullPiece.instance
                 end
             end
-
-            puts
-            i += 1
         end
-        puts
+    end
+
+    def valid_pos?(pos)
+        pos.all? { |coord| coord.between?(0,7) }
+    end
+
+    def in_check?(color)
+        king_pos = find_king(color)
+        king_pos
+        enemy_color = color == :black ? :white : :black
+        enemy_pieces = pieces.select { |piece| piece.color == enemy_color }
+        enemy_pieces.any? { |piece| piece.valid_moves.include?(king_pos)}
+    end
+
+    # returns an array of all positions of piece type and color
+    def find_king(color)
+        found_king = pieces.find { |piece| piece.is_a?(King) && piece.color == color}
+        found_king.pos
+    end
+
+    def pieces
+        pieces = []
+        self.rows.each do |row|
+            pieces += row.select { |pos| !pos.nil? }
+        end
+        pieces
     end
 end
-
-b = Board.new
-b.render
