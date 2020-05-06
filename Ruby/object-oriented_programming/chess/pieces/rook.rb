@@ -13,6 +13,6 @@ class Rook < Piece
     end
 
     def symbol
-        :R
+        @color == :white ? "\u2656" : "\u265c"
     end
 end

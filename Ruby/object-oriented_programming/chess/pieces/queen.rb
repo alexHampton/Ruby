@@ -13,6 +13,6 @@ class Queen < Piece
     end
 
     def symbol
-        :Q
+        @color == :white ? "\u2655" : "\u265b"
     end
 end

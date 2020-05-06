@@ -8,7 +8,7 @@ class Knight < Piece
     end
 
     def symbol
-        :N
+        @color == :white ? "\u2658" : "\u265e"
     end
 
     # return array of all possible moves if no obstacles

@@ -6,7 +6,7 @@ class Pawn < Piece
     end
 
     def symbol
-        :P
+        @color == :white ? "\u2659" : "\u265f"
     end
 
     def moves

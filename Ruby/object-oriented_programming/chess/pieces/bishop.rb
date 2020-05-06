@@ -9,7 +9,7 @@ class Bishop < Piece
     end
 
     def symbol
-        :B
+        @color == :white ? "\u2657" : "\u265d"
     end
 
     def move_dirs

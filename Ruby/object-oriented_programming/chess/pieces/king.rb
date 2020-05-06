@@ -8,7 +8,7 @@ class King < Piece
     end
 
     def symbol
-        :K
+        @color == :white ? "\u2654" : "\u265a"
     end
 
     
