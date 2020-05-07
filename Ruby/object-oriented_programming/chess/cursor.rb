@@ -80,22 +80,19 @@ class Cursor
   def handle_key(key)
     case key
     when :return, :space
-        toggle_selected
-        # if @selected
-        #     @board.request_move(@cursor_pos)
-        #     @selected = false
-        # end
-        
+        toggle_selected        
         @cursor_pos
     when :left, :right, :up, :down
         update_pos(key)
     when :ctrl_c
         Process.exit(0)
+    else
+      nil
     end
   end
 
   def toggle_selected
-    if @board[*cursor_pos].is_a?(NullPiece)
+    if @board[cursor_pos].is_a?(NullPiece)
       @selected = false
     else
       @selected = @selected == false ? true : false

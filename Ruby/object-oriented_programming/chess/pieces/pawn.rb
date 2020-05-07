@@ -33,10 +33,9 @@ class Pawn < Piece
     # the pawn can take (1 and 2 if at start row)
     def forward_steps
         x, y = self.pos[0], self.pos[1]
-        forward_steps = [[x + forward_dir, y]]
-        if at_start_row?
-            forward_steps << [x + (forward_dir * 2), y]
-        end
+        one_ahead, two_ahead = [x + forward_dir, y], [x + (forward_dir * 2), y]
+        forward_steps = [one_ahead] if board[one_ahead].is_a?(NullPiece)
+        forward_steps << two_ahead if at_start_row? && board[two_ahead].is_a?(NullPiece)
         forward_steps
     end
 
@@ -44,7 +43,7 @@ class Pawn < Piece
         x, y = self.pos[0], self.pos[1]
         possible_moves = [[x + forward_dir, y + 1], [x + forward_dir, y - 1]]
         possible_moves.reject! do |move|
-            new_spot = self.board[*move]
+            new_spot = self.board[move]
             new_spot.nil? || new_spot.color == self.color || new_spot.color == nil
         end
         possible_moves

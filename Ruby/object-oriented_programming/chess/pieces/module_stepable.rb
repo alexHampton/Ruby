@@ -7,8 +7,8 @@ module Stepable
         moves.reject! {|move| move.any? {|num| num < 0 || num > 7 }}
         # reject moves where allies stand
         moves.reject! do |move|
-            if !self.board[*move].nil?
-                self.board[*move].color == self.color
+            if !self.board[move].nil?
+                self.board[move].color == self.color
             end
         end
         moves
