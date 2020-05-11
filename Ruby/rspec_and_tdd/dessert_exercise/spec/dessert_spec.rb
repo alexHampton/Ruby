@@ -30,17 +30,25 @@ describe Dessert do
   describe "#add_ingredient" do
     it "adds an ingredient to the ingredients array" do
       dessert.add_ingredient('flour')
-      expect(dessert.ingredients).to eq(['flour'])
+      expect(dessert.ingredients).to include('flour')
     end
   end
 
   describe "#mix!" do
     it "shuffles the ingredient array" do
-      dessert.add_ingredient('flour')
-      dessert.add_ingredient('eggs')
-      dessert.add_ingredient('milk')
-      dessert.mix! until dessert.ingredients[0] != 'flour'
-      expect(dessert.ingredients).to include('flour', 'milk', 'eggs')
+      # dessert.add_ingredient('flour')
+      # dessert.add_ingredient('eggs')
+      # dessert.add_ingredient('milk')
+
+      # better solution
+      ingredients = ['flour', 'eggs', 'milk']
+      ingredients.each { |ingredient| dessert.add_ingredient(ingredient) }
+
+      expect(dessert.ingredients).to eq(ingredients)
+      
+      dessert.mix! # until dessert.ingredients[0] != 'flour'
+      expect(dessert.ingredients).to_not eq(ingredients)
+      expect(dessert.ingredients.sort).to eq(ingredients.sort)
     end
   end
 
