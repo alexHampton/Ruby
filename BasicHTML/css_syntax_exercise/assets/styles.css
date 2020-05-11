@@ -1,0 +1,33 @@
+body {
+    font-family: arial, sans-serif;
+    background-color: rgba(0, 139, 139, 0.2);
+}
+
+h1 {
+    font-size: 38px;
+}
+
+h2 {
+    font-size: 32px;
+}
+
+.ingredients-list {
+    list-style: square inside;
+}
+
+ol {
+    list-style: lower-alpha inside;
+}
+
+header > img {
+    width: 100px;
+}
+
+ul li a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.user_review {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
