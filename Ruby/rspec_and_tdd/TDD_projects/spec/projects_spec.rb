@@ -75,7 +75,7 @@ describe Array do
     end
 
     describe '#stock_picker' do
-    let(:array) { [15.46, 21.12, 8.00, 8.23, 17.92, 16.48, 16.54, 17.00, 24.24, 10.17, 14.17] }
+        let(:array) { [15.46, 21.12, 8.00, 8.23, 17.92, 16.48, 16.54, 17.00, 24.24, 10.17, 14.17] }
 
         it 'returns an array of two elements' do
             expect(array.stock_picker.length).to eq(2)
@@ -93,8 +93,96 @@ describe Array do
             expect(array.stock_picker).to eq([2,8])
         end
 
+        it "doesn't take higher prices from previous days" do            
+            expect([14.17, 10.17, 24.24, 17.00, 16.54, 16.48, 17.92, 8.23, 8.00, 21.12, 15.46].stock_picker).to eq([1, 2])
+        end
+    end
+end
+
+describe TowersOfHanoi do
+    subject(:game) { TowersOfHanoi.new }
+
+    describe '#initialize' do
+        it 'has array @pieces' do
+            expect(game.pieces.class).to eq(Array)
+        end
+
+        it 'contains a number representing each pieces in @pieces' do
+            expect(game.pieces).to eq([3,2,1])
+        end
+
+        it 'initializes the game with a @towers array' do
+            expect(game.towers.class).to eq(Array)
+        end
+
+        it 'places the pieces in the first tower, in descending order' do
+            expect(game.towers).to eq([[3,2,1], [], []])
+        end
+
+    end
+
+    describe '#move' do
+
+        it 'takes in a starting tower and an ending tower as arguments' do
+            expect { game.move(1, 2)}.not_to raise_error
+        end
+
+        it 'moves the top piece from one tower to the selected tower' do
+            game.move(1,2)
+            expect(game.towers).to eq([[3, 2], [1], []])
+        end
+
+    end
+
+    describe '#valid_move?' do
+        it 'takes in a starting tower and and ending tower as arguments' do 
+            expect { game.valid_move?(1, 2) }.not_to raise_error
+        end
+
+        it 'returns false if the starting tower is empty' do
+            expect(game.valid_move?(3, 2)).to eq(false)
+        end
+
+        it 'returns true if the ending tower is empty and the starting tower is not empty' do
+            expect(game.valid_move?(1, 2)).to eq(true)
+        end
+
+        it 'returns false if the top of the starting tower is greater than the top of the ending tower' do
+            game.move(1, 2)
+            expect(game.valid_move?(1, 2)).to eq(false)
+        end
+
+        it 'returns true in all other cases' do
+            game.move(1, 2)
+            game.move(1, 3)
+            expect(game.valid_move?(2, 3)).to eq(true)
+        end
+    end
+
+    describe '#won?' do
         
-            
+        
+        it 'returns false if at least one piece is not on the third tower' do
+            game.move(1, 3)
+            game.move(1, 2)
+            game.move(3, 2)
+            game.move(1, 3)
+            game.move(2, 1)
+            game.move(2, 3)
+            expect(game.won?).to eq(false)
+        end
+
+        it 'returns true when all pieces are on the third tower' do
+            game.move(1, 3)
+            game.move(1, 2)
+            game.move(3, 2)
+            game.move(1, 3)
+            game.move(2, 1)
+            game.move(2, 3)
+            game.move(1, 3)
+            expect(game.won?).to eq(true)
+        end
+
 
     end
 end
