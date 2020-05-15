@@ -76,6 +76,7 @@ describe Array do
 
     describe '#stock_picker' do
         let(:array) { [15.46, 21.12, 8.00, 8.23, 17.92, 16.48, 16.54, 17.00, 24.24, 10.17, 14.17] }
+        let(:mixed_array) { array.reverse }
 
         it 'returns an array of two elements' do
             expect(array.stock_picker.length).to eq(2)
@@ -94,7 +95,7 @@ describe Array do
         end
 
         it "doesn't take higher prices from previous days" do            
-            expect([14.17, 10.17, 24.24, 17.00, 16.54, 16.48, 17.92, 8.23, 8.00, 21.12, 15.46].stock_picker).to eq([1, 2])
+            expect(mixed_array.stock_picker).to eq([1, 2])
         end
     end
 end
