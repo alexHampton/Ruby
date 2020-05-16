@@ -48,4 +48,10 @@ describe Card do
             expect(card.numerical_value).to eq(13)
         end
     end
+
+    describe "#face_value" do
+        it 'returns the letter depicting the face of the card' do
+            expect(card.face_value).to eq('C')
+        end
+    end
 end

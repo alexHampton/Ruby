@@ -11,12 +11,16 @@ class Card
         @value = value
     end
 
-    # "A returns 1 so it will have to be able to return 14 in certain cases"
+    # "A returns 14 so it will have to be able to return 1 in certain cases"
     def numerical_value
         sign = @value[0]
         return Integer(sign) if sign.to_i > 0
-        values = { "A" => 1, "T" => 10, "J" => 11, "Q" => 12, "K" => 13}
+        values = { "T" => 10, "J" => 11, "Q" => 12, "K" => 13, "A" => 14 }
         values[sign]
+    end
+
+    def face_value
+        @value[1]
     end
 
     def self.values
