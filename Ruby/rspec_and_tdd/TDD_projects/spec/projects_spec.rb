@@ -7,15 +7,15 @@ describe Array do
     describe '#my_uniq' do
         let(:array) { [1,2,3,2,4,5,5] }
 
-        it 'should take in an Array and return a new array' do
+        it 'takes in an Array and returns a new array' do
             expect(array.my_uniq.class).to be(Array)
         end
 
-        it 'should contain every unique item of the original array' do
+        it 'contains every unique item of the original array' do
             expect(array.my_uniq).to include(1, 2, 3, 4, 5)
         end
 
-        it 'should have only one of each unique item' do 
+        it 'has only one of each unique item' do 
             expect(array.my_uniq).to eq([1,2,3,4,5])
         end
 
@@ -25,7 +25,7 @@ describe Array do
         context 'with no matching pairs whose sum equals 0' do
             let(:array) { [-2, 0, 1, 3] }
 
-            it 'should return an empty array' do 
+            it 'returns an empty array' do 
                 expect(array.two_sum).to eq([])
             end
         end
@@ -33,16 +33,16 @@ describe Array do
         context 'with matching pairs whose sum equals 0' do
             let(:array) { [-2, -1, 0, 1, 2] }
 
-            it 'should return a 2-dimensional array' do
+            it 'returns a 2-dimensional array' do
                 expect(array.two_sum.length).to eq(2)
                 expect(array.two_sum.flatten.length).to eq(4)
             end
 
-            it 'should return matching indexes' do
+            it 'returns matching indexes' do
                 expect(array.two_sum).to eq([ [0, 4], [1, 3] ])
             end
 
-            it 'should be sorted smaller index to bigger index' do
+            it 'is sorted smaller index to bigger index' do
                 expect([-1, -2, 2, 0, 1].two_sum).to eq([[0, 4], [1, 2]])
             end
         end
@@ -57,15 +57,15 @@ describe Array do
             ]
         }
 
-        it 'should return an array' do
+        it 'returns an array' do
             expect(array.my_tranpose.class).to eq(Array)
         end
 
-        it 'should have the same length as the original array' do
+        it 'has the same length as the original array' do
             expect(array.my_tranpose.length).to eq(3)
         end
 
-        it 'should convert rows to columns and vice versa' do
+        it 'converts rows to columns and vice versa' do
             expect(array.my_tranpose).to eq([
                 [0,3,6],
                 [1,4,7],
@@ -140,20 +140,20 @@ describe TowersOfHanoi do
             expect { game.valid_move?(1, 2) }.not_to raise_error
         end
 
-        it 'returns false if the starting tower is empty' do
+        it 'does not allow moving from empty tower' do
             expect(game.valid_move?(3, 2)).to eq(false)
         end
 
-        it 'returns true if the ending tower is empty and the starting tower is not empty' do
+        it 'always allows moving to an empty tower' do
             expect(game.valid_move?(1, 2)).to eq(true)
         end
 
-        it 'returns false if the top of the starting tower is greater than the top of the ending tower' do
+        it 'does not allow moving onto a smaller disk' do
             game.move(1, 2)
             expect(game.valid_move?(1, 2)).to eq(false)
         end
 
-        it 'returns true in all other cases' do
+        it 'allows all other moves' do
             game.move(1, 2)
             game.move(1, 3)
             expect(game.valid_move?(2, 3)).to eq(true)
@@ -162,8 +162,7 @@ describe TowersOfHanoi do
 
     describe '#won?' do
         
-        
-        it 'returns false if at least one piece is not on the third tower' do
+        it 'is not won if any piece is not on tower 3' do
             game.move(1, 3)
             game.move(1, 2)
             game.move(3, 2)
@@ -173,7 +172,7 @@ describe TowersOfHanoi do
             expect(game.won?).to eq(false)
         end
 
-        it 'returns true when all pieces are on the third tower' do
+        it 'is won when all pieces are on tower 3' do
             game.move(1, 3)
             game.move(1, 2)
             game.move(3, 2)

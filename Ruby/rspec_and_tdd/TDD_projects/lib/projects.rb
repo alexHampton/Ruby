@@ -114,3 +114,7 @@ class TowersOfHanoi
     end
 
 end
+
+if $PROGRAM_NAME == __FILE__
+    TowersOfHanoi.new.play
+end
