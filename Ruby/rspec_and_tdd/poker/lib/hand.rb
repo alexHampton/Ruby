@@ -27,10 +27,7 @@ class Hand
 
     # This will return an array of values of the hand rank.
     # The first unequal value to be compared will determine the winner:
-    # Ex: [8, 4, 3, 0, 0] beats [7, 8, 9, 2, 3] because 14 is greater than 12
-    # It should return an array of 5 values becuase that's the maximum number of 
-    # values which would need to be compared in case, say, 2 players both have a
-    # straight, and they almost have the exact same numbers.
+    # Ex: [8, 4, 3] beats [7, 3, 9, 2, 3] because 8 is greater than 7.
     def hand_ranking_values
         rank_name = hand_ranking
         rank_values = []
