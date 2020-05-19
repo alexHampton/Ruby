@@ -17,10 +17,12 @@ class Game
             @deck.shuffle!
             play_turn
         end
-        puts "#{@players.keys[0]} is the winner with a pot of $#{@players.values[0].money}!"
+        puts "#{@players.keys[0]} wins the game with a total of $#{@players.values[0].money}!"
         sleep(1)
         return        
     end
+
+    private
 
     def update_pot(player, amount)
         @players[player].money -= amount
@@ -31,22 +33,33 @@ class Game
         take_in_ante
         puts "The pot amount is #{@pot}."
         deal_out_cards #use deck method
-        @players.values.each { |player| player.look_at_hand }
         place_bets # use player methods
-        discard_cards #player method
-        deal_new_cards # maybe same as deal_out_cards
-        @players.values.each { |player| player.look_at_hand }
-        place_bets
+        unfolded = @players.values.select { |player| !player.fold }
+        if unfolded.length > 1
+            discard_cards #player method
+            deal_new_cards # maybe same as deal_out_cards
+            place_bets
+            unfolded = @players.values.select { |player| !player.fold }
+            if unfolded.length > 1
+                show_hands 
+            else
+                winner = unfolded.first
+                winner.win_the_pot(@pot)
+                puts "#{winner.name} wins $#{@pot}!"
+                @pot = 0
 
-        
-        show_hands
+            end
+        else
+            winner = unfolded.first
+            winner.win_the_pot(@pot)
+            puts "#{winner.name} wins $#{@pot}!"
+            @pot = 0
+        end
         remove_players_with_no_money
-
-        # @players.values.each { |player| @deck.deal_cards(5) }
-
+        @players.values.each { |player| player.reset_vals }
+        @current_raise_amount = 0
+        @deck.shuffle!
     end
-
-    private
 
     def take_in_ante
         amount = 10
@@ -71,7 +84,9 @@ class Game
     def place_bets
         @players.values.each do |player|  
             unless player.fold
-                puts "#{player.name} has folded?: #{player.fold}"
+                player.look_at_hand
+                puts "Pot amount: $#{@pot}"
+                puts "Your money: $#{player.money}"
                 move = player.make_move
                 case move
                 when :F
@@ -87,8 +102,13 @@ class Game
                         raise NotValidAmount if amount.to_i <= 0
                         amount = amount.to_i
                         raise InsufficientFunds if amount > player.money
+                        # put the money into the pot
+                        @pot += amount
+                        # keep track of what the previous raise was
                         prev_amount = @current_raise_amount
+                        # update the total raise to stay in
                         @current_raise_amount += amount 
+
                         player.put_into_the_pot(@current_raise_amount)
                         player.raised_amount = @current_raise_amount 
                         calls =                      
@@ -108,10 +128,8 @@ class Game
                 end
                 sleep(1)
             end
-            
         end
         @players.values.each do |player|
-            puts "#{player.name} has folded?: #{player.fold}"
             if player.raised_amount < @current_raise_amount && !player.fold
                 begin
                     puts "#{player.name}, would you like to (F)old or (C)all?"
@@ -128,18 +146,18 @@ class Game
                 rescue => ex
                     puts ex.message
                     retry
-                end
-                
+                end                
             end
-        end
-
-        
+            player.raised_amount
+        end        
+        @current_raise_amount = 0
     end
 
     def call(player)
         plus_amount = @current_raise_amount - player.raised_amount
         player.put_into_the_pot(plus_amount)
         player.raised_amount += plus_amount
+        @pot += plus_amount
         puts "#{player.name} sees and puts in $#{plus_amount}."
     end
 
@@ -156,6 +174,38 @@ class Game
                 player.hand.update_hand(new_cards)
             end
         end
+    end
+
+    def show_hands
+        @players.values.each do |player|
+            unless player.fold
+                player.look_at_hand
+                puts "#{player.name} has a #{player.hand.hand_ranking}"
+            end
+        end
+        winner = nil
+        @players.values.each do |player|
+            unless player.fold
+                rank_values = player.hand.hand_ranking_values
+                winner = player if winner.nil?
+
+                rank_to_compare = winner.hand.hand_ranking_values
+                rank_values.each_with_index do |value, idx|
+                    break if rank_to_compare[idx].nil?
+                    if value > rank_to_compare[idx]
+                        winner = player
+                    end                    
+                end
+            end
+        end
+
+        winner.win_the_pot(@pot)
+        puts "#{winner.name} wins $#{@pot}!"
+        @pot = 0
+    end
+
+    def remove_players_with_no_money
+        @players.reject! { |k, player| player.money <= 0 }
     end
 
     def add_players

@@ -29,8 +29,18 @@ class Player
         amount
     end
 
+    def win_the_pot(amount)
+        @money += amount
+    end
+
     def folds
         @fold = true
+    end
+
+    def reset_vals
+        @fold = false
+        @raised_amount = 0
+        @hand = Hand.new
     end
 
     def card_values

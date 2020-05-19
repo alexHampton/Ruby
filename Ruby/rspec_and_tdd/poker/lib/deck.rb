@@ -17,6 +17,7 @@ class Deck
     end
 
     private
+    
     def create_deck
         deck = []
         Card.faces.each do |face_value|

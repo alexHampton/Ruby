@@ -1,5 +1,3 @@
-require 'byebug'
-
 class Hand
     attr_reader :cards
     def initialize(cards = [])
@@ -13,6 +11,7 @@ class Hand
 
     def update_hand(cards)
         @cards += cards
+        @values = card_values
     end
 
     def hand_ranking
