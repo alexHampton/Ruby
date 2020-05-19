@@ -2,13 +2,17 @@ require 'byebug'
 
 class Hand
     attr_reader :cards
-    def initialize(cards)
+    def initialize(cards = [])
         @cards = cards
         @values = card_values
     end
 
     def high_card
         @values.max
+    end
+
+    def update_hand(cards)
+        @cards += cards
     end
 
     def hand_ranking

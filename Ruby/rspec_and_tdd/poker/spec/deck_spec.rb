@@ -37,4 +37,20 @@ describe 'Deck' do
             expect(all_values.sort).to eq(shuffled_values.sort)
         end
     end
+
+    describe "#deal_cards" do 
+        it "takes in an amount as an argument" do
+            expect { deck.deal_cards(5) }.to_not raise_error
+        end
+
+        it "removes the amount of cards from the deck" do
+            deck.deal_cards(5)
+            expect(deck.cards.count).to eq(47)
+        end
+
+        it "returns the amount as cards in an array" do
+            dealt = deck.deal_cards(5)
+            expect(dealt.class).to eq(Array)
+        end
+    end
 end

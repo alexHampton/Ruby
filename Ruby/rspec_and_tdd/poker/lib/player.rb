@@ -1,4 +1,4 @@
-require 'hand.rb'
+require_relative 'hand.rb'
 
 class InvalidMove < StandardError
     def message
@@ -13,21 +13,42 @@ class InvalidCard < StandardError
 end
 
 class Player
-    attr_reader :name, :money, :hand
+    attr_reader :name, :money, :hand, :fold
+    attr_accessor :raised_amount
 
     def initialize(name, money)
         @name = name
         @money = money
-        @hand = nil
+        @hand = Hand.new
+        @fold = false
+        @raised_amount = 0
     end
 
-    def update_hand(cards)
-        @hand = Hand.new(cards)
+    def put_into_the_pot(amount)
+        @money -= amount
+        amount
+    end
+
+    def folds
+        @fold = true
+    end
+
+    def card_values
+        @hand.cards.map { |card| card.value }
+    end
+
+    def look_at_hand
+        puts "#{@name}'s hand:"
+        puts
+        card_values.each  { |card_value| print card_value + " "}
+        puts
+        puts
+        sleep(1)
     end
 
     def make_move
         begin
-            puts "Would you like to (F)old, (S)ee, or (R)aise?"
+            puts "#{@name}, Would you like to (F)old, (S)ee, or (R)aise?"
             move = gets.chomp
             valid_moves = ['F', 'S', 'R']
             unless valid_moves.include?(move.upcase)
@@ -45,16 +66,18 @@ class Player
     end
 
     def discard
-        values = @hand.cards.map { |card| card.value }
+        values = card_values
         valid_moves = values + ['N']
         discarded_cards = []
         move = nil
         until move == 'N'
-            print "Your hand: "
+            puts
+            print "#{@name}'s hand: "
             values.each  { |card_value| print card_value + " "}
             puts
             print "Discarded cards: "
             discarded_cards.each { |dc| print dc + " "}
+            puts
             puts
             puts "Please choose cards to discard by typing the card. "
             puts "If you want to keep a discarded card, please choose that card again."
@@ -67,7 +90,6 @@ class Player
                 retry                
             end
             unless move == 'N'
-
                 if valid_moves.include?(move)
                     # move the card to discarded cards
                     discarded_cards << move

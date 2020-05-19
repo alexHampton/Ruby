@@ -1,4 +1,4 @@
-require 'card'
+require_relative 'card'
 
 class Deck
     attr_reader :cards
@@ -8,6 +8,12 @@ class Deck
 
     def shuffle!
         @cards.shuffle!
+    end
+
+    def deal_cards(amount)
+        dealt_cards = []
+        amount.times { dealt_cards << @cards.shift }
+        dealt_cards
     end
 
     private
