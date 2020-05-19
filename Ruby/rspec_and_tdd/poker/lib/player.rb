@@ -1,3 +1,4 @@
+require 'byebug'
 require_relative 'hand.rb'
 
 class InvalidMove < StandardError
@@ -13,8 +14,8 @@ class InvalidCard < StandardError
 end
 
 class Player
-    attr_reader :name, :money, :hand, :fold
-    attr_accessor :raised_amount
+    attr_reader :name, :money, :fold
+    attr_accessor :raised_amount, :hand
 
     def initialize(name, money)
         @name = name
@@ -117,6 +118,7 @@ class Player
         @hand.cards.reject! { |card| discarded_cards.include?(card.value) }
         discarded_cards
     end
+
 
 end
 
