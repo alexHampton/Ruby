@@ -1,3 +1,4 @@
+require 'byebug'
 require_relative "deck"
 require_relative "player"
 
@@ -35,21 +36,21 @@ class Game
         deal_out_cards #use deck method
         place_bets # use player methods
         unfolded = @players.values.select { |player| !player.fold }
+        
         if unfolded.length > 1
             discard_cards #player method
             deal_new_cards # maybe same as deal_out_cards
             place_bets
-            unfolded = @players.values.select { |player| !player.fold }
+            unfolded = @players.values.select { |player| !player.fold }            
             if unfolded.length > 1
                 show_hands 
-            else
+            else # In case only one player left after players fold 2nd round
                 winner = unfolded.first
                 winner.win_the_pot(@pot)
                 puts "#{winner.name} wins $#{@pot}!"
                 @pot = 0
-
             end
-        else
+        else # In case only one player left after players fold
             winner = unfolded.first
             winner.win_the_pot(@pot)
             puts "#{winner.name} wins $#{@pot}!"
@@ -110,8 +111,7 @@ class Game
                         @current_raise_amount += amount 
 
                         player.put_into_the_pot(@current_raise_amount)
-                        player.raised_amount = @current_raise_amount 
-                        calls =                      
+                        player.raised_amount = @current_raise_amount                 
                         puts "#{player.name}#{calls} raises $#{amount}."      
                         puts player.raised_amount
                     rescue => ex
@@ -129,6 +129,8 @@ class Game
                 sleep(1)
             end
         end
+
+        # iterate through players again in case they need to call someone else's raise.
         @players.values.each do |player|
             if player.raised_amount < @current_raise_amount && !player.fold
                 begin
@@ -149,7 +151,8 @@ class Game
                 end                
             end
             player.raised_amount
-        end        
+        end   
+        @players.values.each { |player| player.reset_raised_amount }     
         @current_raise_amount = 0
     end
 
@@ -191,7 +194,9 @@ class Game
 
                 rank_to_compare = winner.hand.hand_ranking_values
                 rank_values.each_with_index do |value, idx|
+                    # debugger
                     break if rank_to_compare[idx].nil?
+                    break if value < rank_to_compare[idx]
                     if value > rank_to_compare[idx]
                         winner = player
                     end                    
@@ -251,11 +256,3 @@ end
 if $PROGRAM_NAME == __FILE__
     Game.new.run
 end
-# g = Game.new
-
-# g.deck.shuffle!
-# g.deck.cards.each do |card|
-#     print card.value
-#     print " "
-# end
-

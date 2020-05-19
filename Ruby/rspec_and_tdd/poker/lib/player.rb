@@ -38,6 +38,10 @@ class Player
         @fold = true
     end
 
+    def reset_raised_amount
+        @raised_amount = 0
+    end
+
     def reset_vals
         @fold = false
         @raised_amount = 0
