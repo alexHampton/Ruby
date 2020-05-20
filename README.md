@@ -1,5 +1,13 @@
 # Ruby
-## Ruby
+These are various computer programming projects using Ruby with help from App Academy. 
+
+### Major Projects:
+- [Poker: 5-Card Draw](https://github.com/alexHampton/Ruby/tree/master/Ruby/rspec_and_tdd/poker) | Implementation of Poker game using TDD approach.
+- [Chess](https://github.com/alexHampton/Ruby/blob/master/Ruby/object-oriented_programming/chess/game.rb) | Console app of the game using OOP Principles.
+- [Tic Tac Toe Super Computer](https://github.com/alexHampton/Ruby/tree/master/Ruby/data_structures/tic_tac_toe/lib) | Use of polytree node and super computer class to make unbeatable computer in tic tac toe.
+
+### Everything:
+
   1. Enumerables and Debugging  
      - [Enumerable exercises](https://github.com/alexHampton/Ruby/tree/master/Ruby/enumerables) | Make my own enumerables.
      - [Ghost Game Project](https://github.com/alexHampton/Ruby/tree/master/Ruby/ghost) | Game where you try not to complete the word.
@@ -22,6 +30,9 @@
       - [Mancala](https://github.com/alexHampton/Ruby/tree/master/Ruby/object-oriented_programming/mancala/lib) | Added a board class to be used to play the game.
       - [Error Handling Funtime](https://github.com/alexHampton/Ruby/blob/master/Ruby/object-oriented_programming/error_handling_funtime/super_useful.rb) | Exercise in Exception Handling
       - [Chess](https://github.com/alexHampton/Ruby/blob/master/Ruby/object-oriented_programming/chess/game.rb) | Console app of the game using classes that inherit from other classes and modules.
+   7. RSpec and Test-Driven Development
+      - [Robot](https://github.com/alexHampton/Ruby/tree/master/Ruby/rspec_and_tdd/robot) | Read Rspec to implement some basic methods.
+      - [Poker: 5-Card Draw](https://github.com/alexHampton/Ruby/tree/master/Ruby/rspec_and_tdd/poker) | Implementation of Poker game using TDD approach.
     
     
 ## Basic HTML
