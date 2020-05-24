@@ -1,0 +1,82 @@
+/* Introduction to Cascading Style Sheets */
+
+body {
+  /* If the user cannot load the Arial font, the sans-serif font is used */
+  font-family: Arial, sans-serif;
+  background-color: #FEFFF1;
+}
+
+h1 {
+  font-size: 38px;
+}
+
+h2 {
+  font-size: 32px;
+}
+
+/* This selector selects ALL anchor tag children of ALL list elements that
+are children of an Unordered List element */
+ul li a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* This selector selects all image elements that are children (1 level deep)
+of a header element */
+header > img {
+  width: 100px;
+}
+
+/* Selects all elements with the class attribute "ingredients-list" */
+.ingredients-list {
+
+  /* The list style property is shorthand for multiple list-style properties*/
+  list-style: square inside;
+}
+
+ol {
+  list-style: upper-roman inside;
+}
+
+ol li:nth-child(2n) {
+  background-color: lightgray;
+}
+
+.user_review h4 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+h2 + .user_review {
+  border-top: 1px solid black;
+}
+
+input[type="radio"] {
+  cursor: pointer;
+  outline: none;
+  width: 27px;
+  height: 27px;
+  -webkit-appearance: none;
+  background-image: url(./stars.png);
+  vertical-align: bottom;
+}
+
+input[type="radio"]:hover {
+  background-position: 0px 60px;
+}
+
+input[type="radio"]:checked {
+  background-position: 0px 30px;
+}
+
+
+input:last-child {
+  background-color: gold;
+}
+
+input:last-child:hover {
+  color: gold;
+  background-color: black;
+  transition: all 0.5s ease;
+}
+
