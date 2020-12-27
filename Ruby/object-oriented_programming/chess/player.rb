@@ -12,7 +12,7 @@ class HumanPlayer < Player
     end
 
     def make_move
-        puts "Please select a position"
+        puts "Please select a position by using WASD keys to move around"
         until @display.cursor.selected
             @display.cursor.get_input
             system("clear")

@@ -1,7 +1,6 @@
 require_relative "display"
 require_relative "player"
 
-require 'byebug'
 
 class Game
 
@@ -20,6 +19,7 @@ class Game
             system("clear")
             @display.render
             notify_players
+            debugger
             @current_player[0].make_move
             swap_turn!
             # break if @board.checkmate?(@current_player[0].color)
