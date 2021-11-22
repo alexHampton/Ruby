@@ -3,7 +3,7 @@ These are various computer programming projects using Ruby with help from App Ac
 
 ### Major Projects:
 - [Poker: 5-Card Draw](https://github.com/alexHampton/Ruby/tree/master/Ruby/rspec_and_tdd/poker) | Implementation of Poker game using TDD approach.
-- [Chess](https://github.com/alexHampton/Ruby/blob/master/Ruby/object-oriented_programming/chess/game.rb) | Console app of the game using OOP Principles.
+- [Chess](https://github.com/alexHampton/Ruby/blob/master/Ruby/object-oriented_programming/chess/) | Console app of the game using OOP Principles.
 - [Tic Tac Toe Super Computer](https://github.com/alexHampton/Ruby/tree/master/Ruby/data_structures/tic_tac_toe/lib) | Use of polytree node and super computer class to make unbeatable computer in tic tac toe.
 
 ### Everything:
