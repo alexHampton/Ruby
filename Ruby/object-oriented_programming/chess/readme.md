@@ -1,4 +1,4 @@
-#Chess Game Directions
+# Chess Game Directions
 
 *** When running this game, chess icons may appear as ?'s if your console does not support the icon characters. ***
 
@@ -8,3 +8,5 @@
 ```
 ruby game.rb
 ```
+
+![Screenshot of game in VS Code terminal](screenshots/game.png)
